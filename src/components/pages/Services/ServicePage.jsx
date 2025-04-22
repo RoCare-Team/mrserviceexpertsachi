@@ -30,7 +30,7 @@ const { city, cat } = useParams();
 
   useEffect(() => {
 
-    fetch('https://rocareindia.online/web_api/get_page_data.php', {
+    fetch('http://rocareindia.online/web_api/get_page_data.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -41,6 +41,14 @@ const { city, cat } = useParams();
     .then(res => res.json())
     .then(data => {
         console.log("Backend Response:", data);
+
+        // console.log(JSON.stringify(data));
+
+        
+        
+
+        // console.log("brands name"+data.brands[2].brand_url);
+        
         if(!data.error){
             // setCategoryName()
             setData(data);
@@ -401,6 +409,28 @@ const { city, cat } = useParams();
                   </div>
                 </div>
                 </div>
+
+                <div className="bg-white common-spacing">
+                            <h3>Popular Brand in {pagedata.city_name}</h3>
+                            <div className="brandsServices flex items-center flex-wrap gap-2.5 ">
+                                {pagedata.brands?.map((brand) => (
+                                    <div  className='brandsServices '>
+                                        <a href={`${brand.brand_url}/${cat}`}>
+                                        <li className='brand-btn-style'>
+                                             {brand.brand_name}
+                                            <span></span>
+                                        </li>
+                                        </a>
+                                    </div>
+                                 ))} 
+                
+                                {/* {!visibleBrands && (
+                                    <div>
+                                        <button onClick={handleLoadMore} className='readMore'>Read More</button>
+                                    </div>
+                                )} */}
+                            </div>
+                        </div>
         </div>
         //  <FaqAccordion/>
     );
