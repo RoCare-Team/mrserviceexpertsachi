@@ -4,17 +4,11 @@ import ElectImg from '../../assets/images/electronic.svg';
 import DeliveryMan from '../../assets/images/deliveryMan.svg'
 import leftArrow from '../../assets/images/leftArrow.svg';
 import rightArrow from '../../assets/images/rightArrow.svg';
-import Kent from '../../assets/images/All Logos/kent logo.webp';
-import Marq from '../../assets/images/BrandLogos/marq.jpg';
-import Nasaka from '../../assets/images/All Logos/nasaka.webp';
 import Pureit from '../../assets/images/All Logos/unilever pure.webp';
-import Panasonic from '../../assets/images/All Logos/panasonic.webp';
 import RkAqua from '../../assets/images/BrandLogos/rkAqua.jpg';
 import TataSwach from '../../assets/images/All Logos/tata swach.webp';
-import Nexus from '../../assets/images/All Logos/nexus.webp';
 import Philips from '../../assets/images/All Logos/philips logo.webp';
 import Mi from '../../assets/images/All Logos/mi.webp';
-import Llyod from '../../assets/images/All Logos/lloyd.webp';
 import RoInstallation  from '../../assets/images/serviceBrands/RoInstallation.png';
 import WaterPurifier from '../../assets/images/serviceBrands/WaterPurifier.png';
 import AMC from '../../assets/images/AMC.jpg';
