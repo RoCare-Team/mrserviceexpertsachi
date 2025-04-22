@@ -45,7 +45,7 @@ const washingTab = () => {
               <img
                 src={service.image}
                 alt={service.name}
-                className="w-16 h-16 object-contain mb-2"
+                className="w-11 h-11 object-contain mb-2"
               />
               <span className="text-xs font-medium text-gray-700 text-center text-wrap">{service.name}</span>
             </button>

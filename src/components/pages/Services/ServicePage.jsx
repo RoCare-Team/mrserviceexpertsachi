@@ -30,7 +30,7 @@ const { city, cat } = useParams();
 
   useEffect(() => {
 
-    fetch('https://rocareindia.online/web_api/get_page_data.php', {
+    fetch('http://rocareindia.online/web_api/get_page_data.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
