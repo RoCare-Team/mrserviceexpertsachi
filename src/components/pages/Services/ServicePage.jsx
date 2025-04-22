@@ -30,7 +30,7 @@ const { city, cat } = useParams();
 
   useEffect(() => {
 
-    fetch('http://rocareindia.online/web_api/get_page_data.php', {
+    fetch('https://rocareindia.online/web_api/get_page_data.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -231,7 +231,7 @@ const { city, cat } = useParams();
             <div className="right-side lg:w-3/4">
                 <div className="rightSidePortion justify-center">
                     <div className="lg:w-1/2">
-                        <h2 className="ml-2.5 mt-1.5">{formattedBrands} Services in {formattedState}</h2>
+                        <h2 className="ml-2.5 mt-1.5">{formattedBrands} Services in {pagedata.city_name}</h2>
                         <div className="mb-3.5 flex items-center justify-center ">
                         <img src={ServiceBanner} alt='service img' width={475} height={345} style={{
                             borderRadius:'17px',width:'100%'
