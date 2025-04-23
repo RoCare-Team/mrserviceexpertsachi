@@ -58,10 +58,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/checkout" element={<CheckOut />} />
-        <Route path="/service/ro-service" element={<ServicePage />} />
-        {/* <Route path="/ro-service" element={<Navigate to="/ro-service/delhi" />} /> */}
-        <Route path="/service/ro-service/:state" element={<ServicePage />} />
-        <Route path="/:brand/service/ro-service/:state" element={<ServicePage />} />
+        <Route path="/service/ro-water-purifier" element={<ServicePage />} />
+        {/* <Route path="/ro-water-purifier" element={<Navigate to="/ro-water-purifier/delhi" />} /> */}
+        <Route path="/service/ro-water-purifier/:state" element={<ServicePage />} />
+        <Route path="/:brand/service/ro-water-purifier/:state" element={<ServicePage />} />
         <Route path="/service/Washing-service" element={<WashingPage />} />
 
         <Route path="/home/mumbai" element={<StateHome />} />
@@ -93,7 +93,7 @@ function App() {
 // suppose u want to have a component at a particular point but dont want it to appear at rest of others pages
 function BrandServicePage() {
   const location = useLocation();
-  return location.pathname === '/service/ro-service' ? <BrandServices /> : null;
+  return location.pathname === '/service/ro-water-purifier' ? <BrandServices /> : null;
 }
 
 

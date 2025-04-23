@@ -15,7 +15,7 @@ function Booking() {
     const getcmpldetls = async(lead_id) => {
         const user_no=lead_id;
         const payload={lead_id:user_no}
-        console.log(JSON.stringify(payload));
+        // console.log(JSON.stringify(payload));
         
           const res = await fetch("https://waterpurifierservicecenter.in/customer/ro_customer/lead_details.php", {
             method: "POST",
@@ -93,7 +93,7 @@ function Booking() {
 
 
                     </div>
-                    <div className="tabsContent flex flex-col gap-3">
+                    <div className="tabsContent flex flex-col gap-3 max-h-96 overflow-y-auto">
                         {currentServices.length > 0 ? (
                             currentServices.map((service) => (
                                 <div key={service.lead_id} onClick={() => getcmpldetls(service.lead_id)} className="tabDetails  services-section flex items-center gap-2 border border-gray-200  rounded-md">

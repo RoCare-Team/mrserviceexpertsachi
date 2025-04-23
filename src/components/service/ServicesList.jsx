@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ExtraOptions from "../modals/extraOptions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +12,7 @@ import RoInst from '../../assets/images/serviceListImages/ro installation.webp';
 import ProblemModal2 from "../modals/ProblemModal2";
 import PhoneVerification from "../PhoneVerification/PhoneVerification";
 import { toast, ToastContainer } from "react-toastify";
+import { useLocation, useParams } from "react-router-dom";
 
 
 const services = [
@@ -184,22 +185,93 @@ const services = [
 
 
 // Updated serviceCategories to match the Tabs component
-const serviceCategories = [
-  { id: "ro-service", title: "RO Service", showImage: true },
-  { id: "ro-repair", title: "Ro Repair", showImage: true },
-  { id: "ro-installation", title: "RO Installation", showImage: true },
-  { id: "ro-unistallation", title: "RO Uninstallation", showImage: true },
-  { id: "Ro-Amc", title: "RO AMC Plans", showImage: true },
-];
+// const serviceCategories = [
+//   { id: "ro-service", title: "RO Service", showImage: true },
+//   { id: "ro-repair", title: "Ro Repair", showImage: true },
+//   { id: "ro-installation", title: "RO Installation", showImage: true },
+//   { id: "ro-unistallation", title: "RO Uninstallation", showImage: true },
+//   { id: "Ro-Amc", title: "RO AMC Plans", showImage: true },
+// ];
 
 // console.log(cartdata);
 
 const ServicesList = ({ onAddToCart, addedServices = [], state }) => {
+  const location = useLocation();
+  const { city, cat } = useParams(); 
+  const [catNam,setCatNam]=useState("");
+  const [servicedata,setServiceData]=useState([]);
+  const [BrandName,setBrandName]=useState("");
+  // const { city, cat } = useParams();
+
+// console.log(cat);
+
+// console.log(BrandName);
+
+
+
+
+//   useEffect(()=>{
+
+    
+// setStateName(city);
+// setBrandName(cat);
+//   },[])
+
+
+
   // Define which categories should use the modal
   const modalCategories = ['ac', 'refrigerator', 'chimney', 'washing-machine', 'water-purifier'];
   const [showModal, setShowModal] = useState(false);
 
   const type = localStorage.setItem('type', 'add');
+ 
+useEffect(()=>{
+  let lead_type = null;
+
+  if (cat === "washing-machine-repair") {
+    lead_type = 4;
+  } else if (cat === "ac") {
+    lead_type = 2;
+  } else if (cat === "ro-water-purifier") {
+    lead_type = 1;
+  }
+
+  
+
+  const cid = localStorage.getItem('customer_id');
+  
+  fetch('https://waterpurifierservicecenter.in/customer/ro_customer/all_services.php', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({cid:cid,lead_type:lead_type})
+
+})
+.then(res => res.json())
+.then(data => {
+console.log("Service Response:", data);
+setServiceData(data.service_details);
+setBrandName(cat);
+
+},[])
+
+
+  
+},[cat])
+
+
+
+// console.log(servicedata);
+
+
+
+
+
+
+
+
+
   const handleAddToCart = async (service) => {
     if (!addedServices.includes(service.id)) {
       // onAddToCart(service); 
@@ -242,26 +314,18 @@ const ServicesList = ({ onAddToCart, addedServices = [], state }) => {
   return (
     <div className="services-list">
       <ToastContainer />
-      {serviceCategories.map(({ id, title, showImage }) => {
-        const filteredServices = services.filter((s) => s.category === id);
-
-        // Only display categories that have services
-        if (filteredServices.length === 0) return null;
-
-        return (
-          <div key={id} id={id} className="common-service-style ">
-            <h2>{title}</h2>
-            {filteredServices.map((service) => {
+      {servicedata?.map((service) => {
               const isAdded = addedServices.includes(service.id);
               // Fix: Define useModal variable here
               const useModal = modalCategories.includes(service.category);
 
               return (
-                <div className="servicePortionDetails flex-col" key={service.id}>
+                <div key={service.id} className="common-service-style">
+                  <div className="servicePortionDetails flex-col" >
                   <div className="flex serviceWiseContainer">
                     <div className="serviceDetails">
 
-                      <h3 className="serviceVarities">{service.name}</h3>
+                      <h3 className="serviceVarities">{service.service_name}</h3>
                       <div>
                         <span className="serviceReview">
                           <FontAwesomeIcon icon={faStar} /> {service.rating} ({service.reviews} reviews)
@@ -276,11 +340,11 @@ const ServicesList = ({ onAddToCart, addedServices = [], state }) => {
                       </div>
                     </div>
                     <div className="serviceImgContainer">
-                      {showImage && service.image && (
+                     
                         <div className="serviceDetailsImg mb-0.5">
                           <img src={service.image} alt={service.name} />
                         </div>
-                      )}
+                     
                       <div className=" ">
                         {useModal ? (
                           <ProblemModal2 onAddToCart={onAddToCart} service={service} isAdded={isAdded} />
@@ -296,16 +360,14 @@ const ServicesList = ({ onAddToCart, addedServices = [], state }) => {
                       </div>
                     </div>
                   </div>
-                  <li className="briefInfo2">
-                    {service.briefInfo || `High-quality ${service.name} services for a hassle-free experience.`}
-                  </li>
+                  {/* <li className="briefInfo2" >
+                   
+                  </li> */}
+                   <div className="briefInfo2 w-full"  dangerouslySetInnerHTML={{ __html: service.description}}></div>
+                </div>
                 </div>
               );
             })}
-            <hr className="my-2 border-gray-300" />
-          </div>
-        );
-      })}
       <PhoneVerification setShowModal={setShowModal} showModal={showModal} />
 
     </div>

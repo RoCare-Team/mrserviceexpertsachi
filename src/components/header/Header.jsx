@@ -207,7 +207,7 @@ export default function Header() {
 
            
 
-            <Link to={'/service/ro-service'}>
+            <Link to={'/service/washing-machine-repair'}>
               <Button
                 style={{ color: 'white' }}
                 sx={{ textTransform: "none", fontSize: "16px" }}
@@ -361,7 +361,7 @@ export default function Header() {
               </Typography>
             </ListItem>
             <Divider sx={{ borderColor: 'gray' }} />
-            <ListItem button onClick={() => handleNavigation('/service/ro-service')}>
+            <ListItem button onClick={() => handleNavigation('/service/ro-water-purifier')}>
               <ListItemIcon sx={{ minWidth: '34px' }}><FontAwesomeIcon icon={faTools} /> </ListItemIcon>
               <Typography variant="span" fontWeight="400">
                 Service
