@@ -30,7 +30,7 @@ const { city, cat } = useParams();
 
   useEffect(() => {
 
-    fetch('https://rocareindia.online/web_api/get_page_data.php', {
+    fetch('http://rocareindia.online/web_api/get_page_data.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -52,6 +52,10 @@ const { city, cat } = useParams();
         if(!data.error){
             // setCategoryName()
             setData(data);
+
+            document.title=`RO Water Purifier Service ${data?.city_name}  | Call-9311587715`;
+            document.description="hiiiei";
+            // document.desc
         }
     })
     .catch(err => console.error("Error sending city to backend:", err));
