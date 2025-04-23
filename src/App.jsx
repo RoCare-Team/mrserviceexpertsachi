@@ -35,6 +35,7 @@ import Blog from "./components/blogs/Blog";
 import BlogContent from "./components/pages/blogContent/BlogContent";
 import FaqAccordion from "./components/Faq/faq";
 import Test from "./components/pages/test/Test";
+import City from "./components/pages/city/City";
 
 
 function App() {
@@ -65,6 +66,8 @@ function App() {
         <Route path="/service/Washing-service" element={<WashingPage />} />
 
         <Route path="/home/mumbai" element={<StateHome />} />
+
+        <Route path="/:city" element={<City/>}/>
 
         <Route path="/blogs" element={<Blog />} />
         <Route path="/blogs/1/ro-water-main-stages-of-ro-plant-process-and-health-benefits" element={<BlogContent />} />

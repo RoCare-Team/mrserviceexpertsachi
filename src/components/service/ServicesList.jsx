@@ -203,7 +203,7 @@ const ServicesList = ({ onAddToCart, addedServices = [], state }) => {
   const [BrandName,setBrandName]=useState("");
   // const { city, cat } = useParams();
 
-// console.log(cat);
+console.log(cat);
 
 // console.log(BrandName);
 
@@ -234,6 +234,16 @@ useEffect(()=>{
     lead_type = 2;
   } else if (cat === "ro-water-purifier") {
     lead_type = 1;
+  }else if (cat === "microwav-repair") {
+    lead_type = 9;
+  }else if (cat === "vacuum-cleaner-repair") {
+    lead_type = 11;
+  }else if (cat === "geyser-repair") {
+    lead_type = 5;
+  }else if (cat === "kitchen-chimney-repair") {
+    lead_type = 10;
+  }else if (cat === "refrigerator-repair") {
+    lead_type = 6;
   }
 
   

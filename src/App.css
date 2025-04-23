@@ -538,6 +538,22 @@ a {
 
 }
 
+.catgoreyTitle{
+  font-weight: bold;
+font-size: 24px;
+margin-bottom: 24px;
+}
+.aboutStyle{
+  border: 1px solid #7533ea;
+  border-radius: 15px;
+  padding: 14px;
+}
+.catgoreyContent{
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
 .common-login-spacing {
   margin-top: 20px;
 }
@@ -2039,6 +2055,16 @@ padding-block: 13px;
   .rightHeroDetails {
     width: 100%;
   }
+
+  .catgoreyTitle {
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+.catgoreyContent {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 14px;
+}
 
   .chooseSplits {
     /* flex-direction: column; */
